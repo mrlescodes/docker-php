@@ -1,7 +1,12 @@
 FROM php:7.4-fpm
 
 # Install dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends automake git openssh-client rsync unzip zip
+RUN apt-get update && apt-get install -y --no-install-recommends automake apt-utils git openssh-client rsync zip
+
+# PHP Modules
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+RUN chmod +x /usr/local/bin/install-php-extensions && sync
+RUN install-php-extensions zip
 
 # Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
