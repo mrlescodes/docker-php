@@ -1,7 +1,7 @@
 FROM php:7.4-fpm
 
 # Install dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends git openssh-client rsync
+RUN apt-get update && apt-get install -y --no-install-recommends automake git openssh-client rsync unzip zip
 
 # Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
